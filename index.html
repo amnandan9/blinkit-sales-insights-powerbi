@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinkit Analytics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-arrow-circle-left back-btn"></i>
+                <h1 class="logo">blink<span class="logo-it">it</span></h1>
+                <p class="tagline">India's Last Minute App</p>
+            </div>
+
+            <div class="filter-panel">
+                <h3 class="panel-title">FILTER PANEL</h3>
+                <div class="filter-group">
+                    <label>Outlet Location Type</label>
+                    <div class="custom-select">
+                        <select id="locationFilter">
+                            <option value="All">All</option>
+                            <option value="Tier 1">Tier 1</option>
+                            <option value="Tier 2">Tier 2</option>
+                            <option value="Tier 3">Tier 3</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Outlet Size</label>
+                    <div class="custom-select">
+                        <select id="sizeFilter">
+                            <option value="All">All</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Item Type</label>
+                    <div class="custom-select">
+                        <select id="typeFilter">
+                            <option value="All">All</option>
+                            <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                            <option value="Snack Foods">Snack Foods</option>
+                            <option value="Household">Household</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-graphic">
+                <h1 class="logo-small">blink<span class="logo-it">it</span></h1>
+                <svg viewBox="0 0 100 100" class="delivery-guy">
+                    <!-- Delivery guy graphic approximation -->
+                    <circle cx="50" cy="50" r="40" fill="#a4d5bd" opacity="0.3" />
+                    <path d="M20,60 Q50,40 80,60" stroke="#333" stroke-width="5" fill="none"/>
+                    <circle cx="20" cy="65" r="10" fill="#333" />
+                    <circle cx="80" cy="65" r="10" fill="#333" />
+                    <rect x="40" y="30" width="20" height="30" fill="#ffeb3b"/>
+                </svg>
+            </div>
+
+            <div class="contact-info">
+                <div class="service-icon">
+                    <i class="fas fa-sync-alt"></i>
+                    <div class="service-text">24/7<br>SERVICE</div>
+                </div>
+                <div class="details">
+                    <p class="phone">91+ 7975068626</p>
+                    <p class="name"><i class="far fa-user"></i> Balaji k</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="https://www.linkedin.com/in/nandan-a-m-b87aa6228/" target="_blank" class="icon-circle" style="color: inherit; text-decoration: none;"><i class="fas fa-info"></i></a>
+                <div class="icon-circle google"><span class="g-color">G</span></div>
+                <div class="icon-circle"><i class="fas fa-question"></i></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- KPI Cards -->
+            <div class="kpi-container">
+                <div class="kpi-card kpi-total-sales">
+                    <div class="kpi-data">
+                        <h2 class="kpi-value">$1.2M</h2>
+                        <span class="kpi-label">TOTAL SALES</span>
+                    </div>
+                    <div class="kpi-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="kpi-card green-border">
+                    <div class="kpi-data">
+                        <h2 class="kpi-value">$141</h2>
+                        <span class="kpi-label">AVG SALES</span>
+                    </div>
+                    <div class="kpi-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                </div>
+                <div class="kpi-card green-border">
+                    <div class="kpi-data">
+                        <h2 class="kpi-value">8523</h2>
+                        <span class="kpi-label">NO OF ITEMS</span>
+                    </div>
+                    <div class="kpi-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                </div>
+                <div class="kpi-card green-border">
+                    <div class="kpi-data">
+                        <h2 class="kpi-value">3.9</h2>
+                        <span class="kpi-label">AVG RATING</span>
+                    </div>
+                    <div class="kpi-icon rating-icon">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-thumbs-up thumbs-up"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Left Block -->
+                <div class="panel left-panel">
+                    <div class="pill-nav">
+                        <button class="pill active">Total Sales</button>
+                        <button class="pill">Avg Sales</button>
+                        <button class="pill">No of Items</button>
+                        <button class="pill">Avg Rating</button>
+                    </div>
+
+                    <div class="charts-group">
+                        <div class="charts-col fat-col">
+                            <div class="chart-container donut-section">
+                                <h3 class="chart-title">FAT CONTENT</h3>
+                                <div class="chart-wrapper donut-wrapper">
+                                    <canvas id="fatContentChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <h3 class="chart-title">FAT BY OUTLET</h3>
+                                <div class="chart-wrapper stack-wrapper">
+                                    <canvas id="fatByOutletChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="charts-col type-col">
+                            <div class="chart-container tall-chart">
+                                <h3 class="chart-title">ITEM TYPE</h3>
+                                <div class="chart-wrapper tall-wrapper">
+                                    <canvas id="itemTypeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Block -->
+                <div class="panel right-panel">
+                    <div class="chart-container large-chart">
+                        <h3 class="chart-title">Outlet Establishment</h3>
+                        <div class="chart-wrapper full-width-chart">
+                            <canvas id="outletEstablishmentChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="split-charts">
+                        <div class="chart-container">
+                            <h3 class="chart-title">OUTLET SIZE</h3>
+                            <div class="chart-wrapper split-wrapper">
+                                <canvas id="outletSizeChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3 class="chart-title">OUTLET LOCATION</h3>
+                            <div class="chart-wrapper split-wrapper">
+                                <canvas id="outletLocationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Block -->
+            <div class="chart-container table-container">
+                <h3 class="chart-title">OUTLET TYPE</h3>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Outlet Type</th>
+                                <th>Total Sales</th>
+                                <th>No of<br>Items</th>
+                                <th>Avg Sales</th>
+                                <th>Avg Rating</th>
+                                <th>Item Visibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Supermarket Type2</td>
+                                <td class="bg-yellow-light">$131K</td>
+                                <td class="bg-green">928</td>
+                                <td class="bg-pink">$142</td>
+                                <td class="bg-blue">4</td>
+                                <td class="bg-yellow-light">0.06</td>
+                            </tr>
+                            <tr>
+                                <td>Supermarket Type3</td>
+                                <td class="bg-yellow-light">$131K</td>
+                                <td class="bg-green">935</td>
+                                <td class="bg-pink">$140</td>
+                                <td class="bg-blue">4</td>
+                                <td class="bg-yellow-light">0.06</td>
+                            </tr>
+                            <tr>
+                                <td>Grocery Store</td>
+                                <td class="bg-yellow-dark">$152K</td>
+                                <td class="bg-green-dark">1083</td>
+                                <td class="bg-pink">$140</td>
+                                <td class="bg-blue">4</td>
+                                <td class="bg-yellow-dark">0.10</td>
+                            </tr>
+                            <tr>
+                                <td>Supermarket Type1</td>
+                                <td class="bg-yellow-darker">$788K</td>
+                                <td class="bg-green-darker">5577</td>
+                                <td class="bg-pink">$141</td>
+                                <td class="bg-blue">4</td>
+                                <td class="bg-yellow-light">0.06</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
