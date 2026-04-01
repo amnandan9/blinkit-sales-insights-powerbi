@@ -53,7 +53,7 @@ The dashboard helps in understanding business growth and making data-driven deci
 
 ## 🌐 Live Demo
 
-(If hosted, add your link here)
+https://amnandan9.github.io/blinkit-sales-insights-powerbi/
 
 ---
 ## 📌 Repository Purpose
